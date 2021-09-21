@@ -24,7 +24,7 @@ class Course(models.Model):
     
     total_price = fields.Float('Total Price', readonly=True)
     
-    session_ids = fields.One2Many(comodel_name='academy.session',
+    session_ids = fields.One2many(comodel_name='academy.session',
                                  inverse_name='course_id',
                                  string='Sessions')
     
