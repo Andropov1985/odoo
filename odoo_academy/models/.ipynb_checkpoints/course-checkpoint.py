@@ -1,6 +1,7 @@
 # -*- conding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exception import UserError, ValidationError
 
 class Course(models.Model):
     
@@ -23,6 +24,10 @@ class Course(models.Model):
     additional_fee = fields.Float(string='Additional Fee', default=10.0)
     
     total_price = fields.Float('Total Price', readonly=True)
+    
+    session_ids = fields.One2Many(comodel_name='academy.session',
+                                 inverse_name='course_id',
+                                 string='Sessions')
     
     @api.onchange('base_price','additional_fee')
     def _onchange_total_price(self):
