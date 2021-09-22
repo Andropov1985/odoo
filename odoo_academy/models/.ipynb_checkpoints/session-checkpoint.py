@@ -1,6 +1,7 @@
 # -*- conding: utf-8 -*-
 
 from odoo import models, fields, api
+from datetime import timedelta
 
 
 class Session(models.Model):
@@ -21,8 +22,7 @@ class Session(models.Model):
     start_date = fields.Date(string='Start Date',
                             default=fields.Date.today)
     
-    duration = fields.Integer(string='Session Days',
-                          default=1)
+    duration = fields.Integer(string='Session Days', default=1)
     
     end_date = fields.Date(string='End Date',
                           compute='_compute_end_date',

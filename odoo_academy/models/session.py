@@ -1,6 +1,7 @@
 # -*- conding: utf-8 -*-
 
 from odoo import models, fields, api
+from datetime import timedelta
 
 
 class Session(models.Model):
@@ -34,7 +35,7 @@ class Session(models.Model):
             if not (record.start_date and record.duration):
                 record.end_date = record.start_date
             else:
-   #            duration = timedelta(days=record.duration)
+               duration = timedelta(days=record.duration)
                record.end_date = record.start_date + duration
                 
     def _inverse_end_date(self):
